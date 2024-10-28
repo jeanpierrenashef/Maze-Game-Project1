@@ -73,9 +73,25 @@
 
 .information-section{
     gap:15px;
-    padding:20px;
-    align-content: start;
+    padding:20px 0px;
+    justify-content: center;
+    align-items: start;
+
 }
 .information-section div{
-    
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding-right: 5px;
+}
+
+.information-section div > div{
+    height: 40px;
+}
+.information-section div > p {
+    padding-right: 5px;
+    font-family: "Jersey15";
+    font-size: 24px;
+    color: white;
 }
