@@ -12,3 +12,12 @@ button {
     border: 0;
     cursor: pointer;
 }
+h2{
+    font-family: "Jersey25";
+    font-size: 64px;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}

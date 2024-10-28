@@ -1,0 +1,81 @@
+@font-face {
+    font-family: 'Jersey25';
+    src: url('../assets/fonts/Jersey25-Regular.ttf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Jersey15';
+    src: url('../assets/fonts/Jersey15-Regular.ttf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.controls {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    background-color: rgb(35, 38, 43);
+    padding: 20px;
+    align-items: center; 
+}
+
+.controls-section {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 20px;
+}
+
+.controls-section > div {
+    width: 50%;
+}
+
+.controls-buttons {
+    top: 0;
+    left: 0;
+    position: relative;
+    height: 500px;
+    width: 500px;
+}
+.controls-buttons > div {
+    width: 450px;
+    height: 450px;
+}
+.controls-hovering{
+    top: 0;
+    left: 0;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+}
+.controls-hovering:hover{
+    transform: scale(1.11); 
+    z-index: 2; 
+}
+
+.box {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.3s ease; 
+}
+
+
+.box img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.information-section{
+    gap:15px;
+    padding:20px;
+    align-content: start;
+}
+.information-section div{
+    
+}
