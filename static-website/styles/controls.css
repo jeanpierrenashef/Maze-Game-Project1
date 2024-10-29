@@ -11,7 +11,21 @@
     font-weight: normal;
     font-style: normal;
 }
-
+/*
+.controls {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    background-color: rgb(35, 38, 43);
+    padding: 20px;
+    align-items: center; 
+    color: rgba(168, 174, 201, 0.533);
+    background-image: url('../assets/icons/BG5.png'); 
+    background-size: cover;          
+    background-position: center;     
+    background-repeat: no-repeat;
+    opacity: 0.5}
+*/
 .controls-overview {
     position: relative;
     display: flex;
@@ -21,6 +35,7 @@
     padding: 20px;
     color: rgb(207, 206, 218);
     overflow: hidden; 
+    background-color: rgb(21, 23, 26)
 }
     
 .controls-background {
@@ -37,15 +52,13 @@
     }
     
 .controls {
-    position: relative;
-    z-index: 1; 
-    width: 100%;
-    align-items: center;
-    justify-content: center;
+        position: relative;
+        z-index: 1; 
+        width: 100%;
+        align-items: center;
+        justify-content: center;
     }
-    
 .controls-section { 
-    display: flex;
     align-items: center;
     width: 100%;
     padding: 20px;

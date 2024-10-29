@@ -1,0 +1,33 @@
+@font-face {
+    font-family: 'Jersey25';
+    src: url('../assets/fonts/Jersey25-Regular.ttf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Jersey15';
+    src: url('../assets/fonts/Jersey15-Regular.ttf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+*{
+    margin:0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.tutorials{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    background-color: rgb(35, 38, 43);
+    padding: 20px;
+    align-items: center; 
+    color: rgba(168, 174, 201, 0.533);
+    height: 100vh;
+}
+.tutorials-section{
+    width: 100%;
+    padding: 50px;
+}
