@@ -5,7 +5,7 @@ let index = 0;
 
 
 function slide_navigation() {
-    slides.style.marginLeft = `-${index * 800}px`;
+    slides.style.marginLeft = `-${index * 700}px`;
     index++;
     if (index >= total_slides) {
         index = 0; 

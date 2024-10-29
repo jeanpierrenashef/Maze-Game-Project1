@@ -16,18 +16,93 @@
     padding: 0;
     box-sizing: border-box;
 }
+.red {
+    color: rgb(230, 39, 39);
+}
+
+.blue {
+    color: rgb(20, 214, 46);
+}
+
+.yellow {
+    color: rgb(243, 243, 28);
+}
+
 
 .tutorials{
     display: flex;
     justify-content: center;
-    background-color: rgb(35, 38, 43);
-    align-items: center; 
-    color: rgba(168, 174, 201, 0.533);
+    background-color: rgb(17, 19, 24);
+    align-items: start; 
+    color: white;
     height: 100vh;
+}
+.tutorials>h2{
+    justify-content: start;
+    margin-left: 230px;
+}
+.tutorials-information{
+    justify-content: center;
+    align-items: center;
+}
+.tutorials-information > .tutorials-left-section{
+    width: 40%;
+}
+.tutorials-left-section{
+    justify-content: center;
+    align-items: center;
+    gap:30px;
+    
+}
+.tutorials-left-section>h2{
+    padding-bottom: 80px;
+    color: white;
+}
+.tutorials-left-section>h3{
+    letter-spacing: 2px;
+}
+.tutorials-left-section > .tutorials-points{
+    padding-bottom: 80px;
+}
+.tutorials-points{
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+}
+.escape{
+    align-items: center
+}
+.escape > div{
+    width: 15%;
+}
+.escape > p{
+    font-family: "Jersey15";
+    align-items: start;
+}
+.tutorial-icon{
+    height:100%;
+    width: 100%;
+}
+.dodge > div{
+    width: 18%;
+}
+.dodge > p{
+    font-family: "Jersey15";
+    align-items: start;
+}
+.collect{
+    margin-left: 10px;
+}
+.collect > div{
+    width: 10%;
+}
+.collect > p{
+    font-family: "Jersey15";
+    align-items: start;
 }
 
 .slider{
-    width: 800px;
+    width: 700px;
     height: 500px;
     border-radius: 10px;
     overflow: hidden;
@@ -35,7 +110,7 @@
 }
 .slides{
     transition: 1s ease;
-    width:800px;
+    width:700px;
     height: 500px;
 
 }
@@ -43,27 +118,12 @@
     display: none;
 }
 .slide{
-    width: 800px;
+    width: 700px;
     transition: 2s;
 }
 .slide img{
-    width:800px;
+    width:700px;
     height: 500px;
 }
 
-
-.navigation-auto{
-    position: absolute;
-    width: 800px;
-    justify-content: center;
-    margin-top: 460px;
-}
-.navigation-auto div{
-    border: 2px solid transparent;
-    padding: 5px;
-    transition:1s;
-}
-.navigation-auto div:not(:last-child){
-    margin-right: 40px;
-}
 
