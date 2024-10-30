@@ -261,7 +261,33 @@ function create(){
 
     this.physics.add.collider(player, beams)
 
-
+    this.physics.add.collider(player, bots, ()=>{
+        const loosingtext = this.add.text( 1000,  300, 'Game Over, you LOST', {
+            fontSize: '40px',
+            fill: '#05f5f5',
+            fontFamily: 'Arial'
+        }).setScale(0.5).setInteractive();
+        loosingtext.setVisible(true);
+        const loosingtext2 = this.add.text( 1000,  400, 'You can return to the main menu', {
+            fontSize: '40px',
+            fill: '#05f5f5',
+            fontFamily: 'Arial'
+        }).setScale(0.5).setInteractive();
+        loosingtext2.setVisible(true);
+        const returnbtn2 = this.add.text( 1000,  500, 'Main Menu', {
+            fontSize: '40px',
+            fill: '#05f5f5',
+            fontFamily: 'Arial'
+        }).setScale(0.5).setInteractive();
+        returnbtn2.setVisible(true);
+        const reloadbtn2 = this.add.text( 1200,  500, 'Replay', {
+            fontSize: '40px',
+            fill: '#05f5f5',
+            fontFamily: 'Arial'
+        }).setScale(0.5).setInteractive();
+        reloadbtn2.setVisible(true);
+        this.scene.pause();
+    }, null, this);
     
 
 
