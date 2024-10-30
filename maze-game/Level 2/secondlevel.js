@@ -37,6 +37,11 @@ let timers = [];
 let speeds = 140; 
 let startTime;
 
+const xMin = 20;
+const yMin = 20;
+const xMax = 740;
+const yMax = 800;
+
 
 function preload() {
     this.load.image('player', 'https://cdn-icons-png.flaticon.com/128/742/742751.png');
@@ -122,7 +127,7 @@ function create() {
         'IWWWWWWWWWWWW  WWWWWWWWW  WWWWWWWWWWW I',
         'IWW  WWWWWWWWWWWWW  WWWWWWWWWWWWWWWWW I',
         'IWWWWWWWW  WWWWWWWWWWWWWWWW  WWWWW  W I',
-        'IWWWWWWWWWWWWWWWW  WWWWWWWWWWWWWWWWWWI',
+        'IWWWWWWWWWWWWWWWW  WWWWWWWWWWWWWWWWWW I',
         
     ];
     this.cameras.main.setBackgroundColor('#190321');
@@ -236,7 +241,7 @@ function create() {
 
     bots.getChildren().forEach(bot => {
         //this.physics.add.collider(player, bot, this.hitBomb, null, this)
-        this.physics.add.collider(bot,beams)   
+        this.physics.add.collider(bot,walls)   
     });
     //bots.getChildren().forEach(bot => {this.physics.add.collider(bot, boxes)});
     //startTime = this.time.now;
@@ -285,21 +290,27 @@ function update() {
 })
 
     //Player movement
-    if (cursors.left.isDown) {
+    if (cursors.left.isDown && player.x > xMin) {
         player.setVelocityX(-160);
-    } else if (cursors.right.isDown) {
+    } else if (cursors.right.isDown && player.x < xMax) {
         player.setVelocityX(160);
     } else {
         player.setVelocityX(0);
     }
 
-    if (cursors.up.isDown) {
+    if (cursors.up.isDown && player.y > yMin) {
         player.setVelocityY(-160);
-    } else if (cursors.down.isDown) {
+    } else if (cursors.down.isDown && player.y < yMax) {
         player.setVelocityY(160);
     } else {
         player.setVelocityY(0);
     }
+
+    // Check boundaries in case the player somehow moves outside them
+    if (player.x < xMin) player.x = xMin;
+    if (player.x > xMax) player.x = xMax;
+    if (player.y < yMin) player.y = yMin;
+    if (player.y > yMax) player.y = yMax;
 }
 
 
