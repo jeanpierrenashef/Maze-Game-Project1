@@ -41,14 +41,14 @@ const yMax = 720;
 
 function preload() {
     this.load.image('player', 'https://cdn-icons-png.flaticon.com/128/742/742751.png');
-    this.load.image('bot', 'https://cdn-icons-png.flaticon.com/512/595/595582.png'); // Replace with your player image
+    this.load.image('bot', 'https://cdn-icons-png.freepik.com/512/1618/1618869.png'); // Replace with your player image
     this.load.image('key', 'https://cdn-icons-png.flaticon.com/512/807/807241.png');
     this.load.image('coin', 'https://static.vecteezy.com/system/resources/thumbnails/023/588/193/small/coin-with-dollar-sign-golden-dollar-symbol-gold-coin-3d-stack-of-gold-coins-icon-isolated-symbol-png.png'); // Replace with your coin image
 }
 
 function create() {
-    this.cameras.main.setBackgroundColor('#190321');     
-    this.cameras.main.setZoom(0.6); // Zoom out to show more of the game world
+    this.cameras.main.setBackgroundColor('#091538');     
+    this.cameras.main.setZoom(0.8); // Zoom out to show more of the game world
     
     // Initialize player, coins, bots, etc.
     player = this.physics.add.sprite(50, 50, 'player').setScale(0.15);
@@ -107,7 +107,7 @@ function create() {
         'IWWWWWWWWWWWWWWWW  WWWWWWWWWWWWW  WWWWWWWWW WW I',
         
     ];
-    this.cameras.main.setBackgroundColor('#190321');
+    
     var coinPositions = [];
     var keysPositions = [];
     let walls = [];
@@ -211,7 +211,34 @@ function create() {
 
     this.physics.add.collider(player, beams)
 
-    this.physics.add.collider(player, bots, this.hitBomb, null, this);
+    this.physics.add.collider(player, bots, ()=>{
+        const loosingtext = this.add.text( 1000,  300, 'Game Over, you LOST', {
+            fontSize: '40px',
+            fill: '#05f5f5',
+            fontFamily: 'Arial'
+        }).setScale(0.5).setInteractive();
+        loosingtext.setVisible(true);
+        const loosingtext2 = this.add.text( 1000,  400, 'You can return to the main menu', {
+            fontSize: '40px',
+            fill: '#05f5f5',
+            fontFamily: 'Arial'
+        }).setScale(0.5).setInteractive();
+        loosingtext2.setVisible(true);
+        const returnbtn2 = this.add.text( 1000,  500, 'Main Menu', {
+            fontSize: '40px',
+            fill: '#05f5f5',
+            fontFamily: 'Arial'
+        }).setScale(0.5).setInteractive();
+        returnbtn2.setVisible(true);
+        const reloadbtn2 = this.add.text( 1200,  500, 'Replay', {
+            fontSize: '40px',
+            fill: '#05f5f5',
+            fontFamily: 'Arial'
+        }).setScale(0.5).setInteractive();
+        reloadbtn2.setVisible(true);
+        this.scene.pause();
+
+    }, null, this);
 
 
 
@@ -238,17 +265,17 @@ function update() {
         //Bot should move from 40 to 740
         if (decisions[index] == 0)
             if(bot.x < 940)
-                bot.x = bot.x + 5
+                bot.x = bot.x + 4
             else{
                 decisions[index] = 1
-                bot.x = bot.x - 5
+                bot.x = bot.x - 4
             }
         else{
             if(bot.x > 44)
-                bot.x = bot.x-5
+                bot.x = bot.x-4
             else{
                 decisions[index] = 0
-                bot.x = bot.x + 5
+                bot.x = bot.x + 4
             }
             
         }
@@ -256,14 +283,7 @@ function update() {
             {
                 return
             }        
-    /*const elapsedTime = this.time.now - timers[index];
-    if (elapsedTime < moveDurations[index]) {
-        bot.x += directions[index] * (speeds * this.game.loop.delta / 1000); // Convert delta time to seconds
-    }  else {
-        directions[index] *= -1;
-        timers[index] = this.time.now;
-        moveDurations[index] = Phaser.Math.Between(1000, 3000); 
-    }})*/
+   
 })
 
     //Player movement
@@ -294,11 +314,41 @@ function collectCoin(player, coin) {
     coin.disableBody(true, true);
     score += 10;
     scoreText.setText('Score: ' + score);
+    
 
 }
 function collectKeys(player, key) { 
     key.disableBody(true, true);
     keyScore += 1;
     keyText.setText('Keys Collected: ' + keyScore + "/4");
+    if(keyScore===4){
+        const winningtext = this.add.text( 1000,  300, 'Congratulations, you WIN', {
+            fontSize: '40px',
+            fill: '#05f5f5',
+            fontFamily: 'Arial'
+        }).setScale(0.5).setInteractive();
+        winningtext.setVisible(true);
+        const winningtext2 = this.add.text( 1000,  400, 'You can return to the main menu', {
+            fontSize: '40px',
+            fill: '#05f5f5',
+            fontFamily: 'Arial'
+        }).setScale(0.5).setInteractive();
+        winningtext2.setVisible(true);
+        const returnbtn = this.add.text( 1000,  500, 'Main Menu', {
+            fontSize: '40px',
+            fill: '#05f5f5',
+            fontFamily: 'Arial'
+        }).setScale(0.5).setInteractive();
+        returnbtn.setVisible(true);
+        const reloadbtn = this.add.text( 1200,  500, 'Replay', {
+            fontSize: '40px',
+            fill: '#05f5f5',
+            fontFamily: 'Arial'
+        }).setScale(0.5).setInteractive();
+        reloadbtn.setVisible(true);
+        this.scene.pause();
+
+    }
 
 }
+
