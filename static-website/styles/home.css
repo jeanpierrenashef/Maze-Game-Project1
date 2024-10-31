@@ -94,9 +94,9 @@ body{
 .cta-button {
     justify-content: center;
     align-items: center;
-    width: 65%;
+    width: 70%;
     font-family: 'Jersey25', sans-serif;
-    font-size: 42px;
+    font-size: 38px;
     padding: 15px 40px;
     color: white;
     background-color: #e63946;
@@ -113,4 +113,10 @@ body{
     transform: scale(1.05);
 }
 
+.levels{
+    gap: 20px;
+}
+.levels > a{
+    font-size: 32px;
+}
 

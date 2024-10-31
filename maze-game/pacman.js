@@ -48,7 +48,7 @@ function preload() {
 
 function create() {
      
-    this.cameras.main.setZoom(0.8);
+    this.cameras.main.setZoom(0.7);
 
     player = this.physics.add.sprite(50, 50, 'player').setScale(0.15);
     player.setCollideWorldBounds(true);

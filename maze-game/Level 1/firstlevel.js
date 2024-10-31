@@ -35,7 +35,7 @@ let timers = [];
 //let speeds = 140; 
 let startTime;
 let winStatus=false;
-
+let music;
 
 const xMin = 20;
 const yMin = 20;
@@ -48,7 +48,7 @@ function preload() {
     this.load.image('key', 'https://cdn-icons-png.flaticon.com/512/807/807241.png');
     this.load.image('coin', 'https://static.vecteezy.com/system/resources/thumbnails/023/588/193/small/coin-with-dollar-sign-golden-dollar-symbol-gold-coin-3d-stack-of-gold-coins-icon-isolated-symbol-png.png'); // Replace with your coin image
     this.load.image('diamond', 'https://cdn-icons-png.flaticon.com/512/408/408472.png'); }
-
+    //this.load.audio('backgroundMusic', 'C:\Users\Jeanpierre Nashef\OneDrive - Lebanese American University\SE Factory\Tech\Taha\Project 1\Static-Website\maze-game\Level 1\cc0_lucid_trigger.wav');
 function create() {
     this.cameras.main.setZoom(0.5);
 
@@ -308,6 +308,8 @@ function create() {
         reloadbtn2.setVisible(true);
         this.scene.pause();
     }, null, this);
+
+
     
 
 
@@ -329,6 +331,12 @@ function create() {
     //keyText = this.add.text(400, 16, 'Keys Collected: 0/3', { fontSize: '32px', fill: '#fff' });
     scoreText = this.add.text(16, 16, 'Score: 0', { fontSize: '32px', fill: '#fff' });
     cursors = this.input.keyboard.createCursorKeys();
+
+    /*music = this.sound.add('backgroundMusic', {
+        loop: true // Loop the music
+    });
+
+    music.play(); // Start playing the music*/
     
 }
 function loose(){
@@ -340,6 +348,7 @@ function win(scene){
     winStatus=true;
     console.log(winStatus);
     //scene.winningtext.setVisible(true);
+
 
 }
 function update() {
