@@ -37,14 +37,15 @@ let startTime;
 const xMin = 20;
 const yMin = 20;
 const xMax = 930;
-const yMax = 720;
+const yMax = 620;
 
 function preload() {
     this.load.image('player', 'https://cdn-icons-png.flaticon.com/128/742/742751.png');
     this.load.image('bot', 'https://cdn-icons-png.freepik.com/512/1618/1618869.png'); // Replace with your player image
     this.load.image('key', 'https://cdn-icons-png.flaticon.com/512/807/807241.png');
     this.load.image('coin', 'https://static.vecteezy.com/system/resources/thumbnails/023/588/193/small/coin-with-dollar-sign-golden-dollar-symbol-gold-coin-3d-stack-of-gold-coins-icon-isolated-symbol-png.png'); // Replace with your coin image
-}
+    this.load.image('diamond', 'https://cdn-icons-png.flaticon.com/512/408/408472.png'); 
+}   
 
 function create() {
     this.cameras.main.setBackgroundColor('#091538');     
@@ -65,8 +66,8 @@ function create() {
         '  WKCCCC CCCTCCWWW     CCCCCCCCCCCCWWW    WWCCW',
         '  WWCCCCCCW     WWWWTWWCCCWWWBWCCCCWWWW     CCW',
         '  WWWW WW WWWCCCCCWWWW    WWWWWW   WWWT CCCWWWW',
-        '  CCKCCCCTCCC     WWWCCCCCCCCCCC    WWWCCCCWKWW',
-        '  CCCCCCCTCCC     WWWCCCCCCCCCCC    WWWCCCWCWWW',
+        '  CCKCCCCTWWW     WWWCCCCCCCCCCC    WWWWWCCWKWW',
+        '  CCCCCCCCCC      WWWCCCCWTWWCCC    WWWCCCWCWWW',
         
     ];
     maze = [' ',' ',
@@ -80,7 +81,7 @@ function create() {
         ' WWWWWWWWWWW  WWWWWWW  WWWWWWWWWWWWWWWW  WWWWWW',
         ' WWWWW  WWWWWWWWWWWWWWWWWWWWWWW  WWWWWWWW WWWWW',
         ' WWWWWWWWWWWWWWWW  WWWWWW  WWWWWWWWWWWWWWW  WWW',
-        ' WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW',
+        ' WWWWWWWWWWWWWWWWWWWWWwwwwwwwWWWWWWWWWWWWWWWWWW',
         
     ];
     maze3 = [' ',' ',' ',' ',
@@ -104,7 +105,7 @@ function create() {
         'IWWWWW  WWWWWWWWWWWWWWWWW  WWWWWWWWWWWWWW  WWW I',
         'IWWWWWWWWWWWWWWW  WWWWWWWWWWWWWW  WWWWWWWWWWWW I',
         'IWWWWWWWW  WWWWWWWWWWWWW  WWWWWWWWWWWWWW  WWWW I',
-        'IWWWWWWWWWWWWWWWW  WWWWWWWWWWWWW  WWWWWWWWW WW I',
+        'IWWWWWWWWWWWWWWWWWWWWWW  N    WWWWWWWWWWWWW WW I',
         
     ];
     
@@ -183,6 +184,10 @@ function create() {
         bots = this.physics.add.group();
         keys = this.physics.add.group();
 
+        const gate = this.physics.add.sprite(490, 620, 'diamond');
+        gate.setBounceY(Phaser.Math.FloatBetween(0.4, 0.8));
+        gate.setScale(0.09);
+
         botPositions.forEach(p => {
             const bot = bots.create(p.x, p.y, 'bot');
             bot.setBounceY(Phaser.Math.FloatBetween(0.4, 0.8));
@@ -202,24 +207,72 @@ function create() {
             key.setBounceY(Phaser.Math.FloatBetween(0.4, 0.8));
             key.setScale(0.05);
 });
-
+        totalKeys = keysPositions.length;
     
     
 
     this.physics.add.collider(player, walls);
     this.physics.add.collider(bots, walls);
 
+    this.physics.add.overlap(player, gate, () => {
+        if (keyScore === totalKeys) { // Check if player has collected all keys
+            const winningtext = this.add.text(1000, 300, 'Congratulations, you WIN', {
+                fontSize: '64px',
+                fill: '#05f5f5',
+                fontFamily: 'Arial'
+            }).setScale(0.5).setInteractive();
+            
+            winningtext.setVisible(true);
+            
+            const winningtext2 = this.add.text(1000, 400, 'You can return to the main menu', {
+                fontSize: '48px',
+                fill: '#05f5f5',
+                fontFamily: 'Arial'
+            }).setScale(0.5).setInteractive();
+            
+            winningtext2.setVisible(true);
+    
+            const returnbtn = this.add.text(1000, 500, 'Main Menu', {
+                fontSize: '40px',
+                fill: '#05f5f5',
+                fontFamily: 'Arial'
+            }).setScale(0.5).setInteractive();
+            
+            returnbtn.setVisible(true);
+    
+            const reloadbtn = this.add.text(1200, 500, 'Replay', {
+                fontSize: '40px',
+                fill: '#05f5f5',
+                fontFamily: 'Arial'
+            }).setScale(0.5).setInteractive();
+            
+            reloadbtn.setVisible(true);
+            
+            this.scene.pause();  // Pause the game if the player wins
+        } else {
+            // Optional: Show a message if the player hasn’t collected all keys
+            const needKeysText = this.add.text(1000, 300, 'Collect all keys before exiting!', {
+                fontSize: '64px',
+                fill: '#ff0000',
+                fontFamily: 'Arial'
+            }).setScale(0.5);
+            
+            this.time.delayedCall(2000, () => needKeysText.destroy()); // Remove the message after 2 seconds
+        }
+    }, null, this);
+    
+
     this.physics.add.collider(player, beams)
 
     this.physics.add.collider(player, bots, ()=>{
         const loosingtext = this.add.text( 1000,  300, 'Game Over, you LOST', {
-            fontSize: '40px',
+            fontSize: '64px',
             fill: '#05f5f5',
             fontFamily: 'Arial'
         }).setScale(0.5).setInteractive();
         loosingtext.setVisible(true);
         const loosingtext2 = this.add.text( 1000,  400, 'You can return to the main menu', {
-            fontSize: '40px',
+            fontSize: '48px',
             fill: '#05f5f5',
             fontFamily: 'Arial'
         }).setScale(0.5).setInteractive();
@@ -237,7 +290,6 @@ function create() {
         }).setScale(0.5).setInteractive();
         reloadbtn2.setVisible(true);
         this.scene.pause();
-
     }, null, this);
 
 
@@ -257,6 +309,17 @@ function create() {
     scoreText = this.add.text(16, 16, 'Score: 0', { fontSize: '32px', fill: '#fff' });
     cursors = this.input.keyboard.createCursorKeys();
     
+}
+function loose(){
+    console.log('loose');
+}
+function win(scene){
+    return true;
+    
+    winStatus=true;
+    console.log(winStatus);
+    //scene.winningtext.setVisible(true);
+
 }
 
 function update() {
@@ -320,35 +383,6 @@ function collectCoin(player, coin) {
 function collectKeys(player, key) { 
     key.disableBody(true, true);
     keyScore += 1;
-    keyText.setText('Keys Collected: ' + keyScore + "/4");
-    if(keyScore===4){
-        const winningtext = this.add.text( 1000,  300, 'Congratulations, you WIN', {
-            fontSize: '40px',
-            fill: '#05f5f5',
-            fontFamily: 'Arial'
-        }).setScale(0.5).setInteractive();
-        winningtext.setVisible(true);
-        const winningtext2 = this.add.text( 1000,  400, 'You can return to the main menu', {
-            fontSize: '40px',
-            fill: '#05f5f5',
-            fontFamily: 'Arial'
-        }).setScale(0.5).setInteractive();
-        winningtext2.setVisible(true);
-        const returnbtn = this.add.text( 1000,  500, 'Main Menu', {
-            fontSize: '40px',
-            fill: '#05f5f5',
-            fontFamily: 'Arial'
-        }).setScale(0.5).setInteractive();
-        returnbtn.setVisible(true);
-        const reloadbtn = this.add.text( 1200,  500, 'Replay', {
-            fontSize: '40px',
-            fill: '#05f5f5',
-            fontFamily: 'Arial'
-        }).setScale(0.5).setInteractive();
-        reloadbtn.setVisible(true);
-        this.scene.pause();
-
-    }
+    keyText.setText('Keys Collected: ' + keyScore);
 
 }
-

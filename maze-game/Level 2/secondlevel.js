@@ -319,7 +319,7 @@ function create() {
     
 
 
-    this.physics.add.collider(player, bots, this.hitBomb, null, this);
+    //this.physics.add.collider(player, bots, this.hitBomb, null, this);
 
 
 
@@ -334,7 +334,7 @@ function create() {
     this.physics.add.overlap(player, coins, collectCoin, null, this);
     this.physics.add.overlap(player, keys, collectKeys, null, this);
 
-    keyText = this.add.text(450, 16, 'Keys Collected: 0', { fontSize: '32px', fill: '#fff' });
+    keyText = this.add.text(400, 16, 'Keys Collected: 0/3', { fontSize: '32px', fill: '#fff' });
     scoreText = this.add.text(16, 16, 'Score: 0', { fontSize: '32px', fill: '#fff' });
     cursors = this.input.keyboard.createCursorKeys();
     
