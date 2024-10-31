@@ -3,7 +3,9 @@ img {
     height: 100%;
     object-fit: cover;
 }
-
+footer{
+    
+}
 input {
     outline: 0;
 }
@@ -20,8 +22,16 @@ h3{
     font-family: "Jersey25";
     font-size: 52px;
 }
+h4{
+    font-family: "Jersey25";
+}
+h5{
+    font-family: "Jersey15";
+    font-size: 19PX;
+}
 
 a {
     text-decoration: none;
     color: black;
+    font-family: "Jersey15";
 }

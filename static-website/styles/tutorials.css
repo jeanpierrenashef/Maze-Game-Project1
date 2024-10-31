@@ -50,13 +50,11 @@
     width: 100%;
     padding: 0 20px;
 }
-.tutorials-information > div{
-    gap:20px;
-}
+
 .tutorials-left-section{
     justify-content: center;
     align-items: center;
-    gap:30px;
+
     
 }
 .tutorials-left-section>h2{
