@@ -20,66 +20,38 @@
             <img src="./assets/icons/logo.png">
         </div>
         <div class="flex row nav-links">
-            <a href="'#">Home</a>
-            <a href="">Story</a>
-            <a href="">Avatars</a>
-            <a href="">Controls</a>
-            <a href="">Tutorials</a>
+            <a href="#" data-scroll="home">Home</a>
+            <a href="#" data-scroll="story">Story</a>
+            <a href="#" data-scroll="avatars">Avatars</a>
+            <a href="#" data-scroll="controls">Controls</a>
+            <a href="#" data-scroll="tutorials">Tutorials</a>
         </div>
     </nav>
-    <section class="flex row parallax">
-        <h1>MAZE RUNNER</h1>
-        <img src="assets/icons/BG1.2.png" id="icon1">
-        <img src="assets/icons/BG2.png" id="icon2">
-        <img src="assets/icons/BG3.png" id="icon3">
-        <img src="assets/icons/BG4.png" id="icon4">
-        <img src="assets/icons/BG5.png" id="icon5">
+    <section class="flex row parallax" data-section="home">
+        <div class="flex column viewpoint">
+            <h1>MAZE RUNNER</h1>
+            <button class="cta-button">PLAY</button>
+        </div>
+        <div>
+            <img src="assets/icons/BG1.2.png" id="icon1">
+            <img src="assets/icons/BG2.png" id="icon2">
+            <img src="assets/icons/BG3.png" id="icon3">
+            <img src="assets/icons/BG4.png" id="icon4">
+            <img src="assets/icons/BG5.png" id="icon5">
+        </div>
 
     </section>
-    <section class="story">
+    <section class="flex column story" data-section="story">
         <h2>Story</h2>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam nulla pariatur 
-            necessitatibus labore consequatur consequuntur nostrum a commodi voluptas sequi 
-            sapiente facere, illo nesciunt est odit excepturi aspernatur impedit nobis eum 
-            delectus magni doloribus? Necessitatibus consectetur sit distinctio adipisci quae 
-            aperiam asperiores laborum iusto ipsa soluta molestiae ipsum, animi, magnam quaerat 
-            fuga a enim eaque saepe, aliquam velit ut maiores. Placeat laudantium praesentium 
-            laborum id earum, enim animi ipsum quam tempore dolorum debitis voluptates odio 
-            error dignissimos eos nihil inventore laboriosam magni molestias voluptatum minus 
-            pariatur? Quasi non, nihil omnis voluptates est dicta suscipit fugiat quisquam facere 
-            dolorum deserunt sapiente enim eveniet, ipsum sed deleniti eos consectetur a molestias 
-            sunt! Nesciunt sit, velit autem, atque veniam ea neque adipisci modi tenetur quibusdam 
-            excepturi rerum. Mollitia tempora cupiditate dolor id dignissimos.
-        </p><br><br>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam nulla pariatur 
-            necessitatibus labore consequatur consequuntur nostrum a commodi voluptas sequi 
-            sapiente facere, illo nesciunt est odit excepturi aspernatur impedit nobis eum 
-            delectus magni doloribus? Necessitatibus consectetur sit distinctio adipisci quae 
-            aperiam asperiores laborum iusto ipsa soluta molestiae ipsum, animi, magnam quaerat 
-            fuga a enim eaque saepe, aliquam velit ut maiores. Placeat laudantium praesentium 
-            laborum id earum, enim animi ipsum quam tempore dolorum debitis voluptates odio 
-            error dignissimos eos nihil inventore laboriosam magni molestias voluptatum minus 
-            pariatur? Quasi non, nihil omnis voluptates est dicta suscipit fugiat quisquam facere 
-            dolorum deserunt sapiente enim eveniet, ipsum sed deleniti eos consectetur a molestias 
-            sunt! Nesciunt sit, velit autem, atque veniam ea neque adipisci modi tenetur quibusdam 
-            excepturi rerum. Mollitia tempora cupiditate dolor id dignissimos.
-        </p><br><br>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam nulla pariatur 
-            necessitatibus labore consequatur consequuntur nostrum a commodi voluptas sequi 
-            sapiente facere, illo nesciunt est odit excepturi aspernatur impedit nobis eum 
-            delectus magni doloribus? Necessitatibus consectetur sit distinctio adipisci quae 
-            aperiam asperiores laborum iusto ipsa soluta molestiae ipsum, animi, magnam quaerat 
-            fuga a enim eaque saepe, aliquam velit ut maiores. Placeat laudantium praesentium 
-            laborum id earum, enim animi ipsum quam tempore dolorum debitis voluptates odio 
-            error dignissimos eos nihil inventore laboriosam magni molestias voluptatum minus 
-            pariatur? Quasi non, nihil omnis voluptates est dicta suscipit fugiat quisquam facere 
-            dolorum deserunt sapiente enim eveniet, ipsum sed deleniti eos consectetur a molestias 
-            sunt! Nesciunt sit, velit autem, atque veniam ea neque adipisci modi tenetur quibusdam 
-            excepturi rerum. Mollitia tempora cupiditate dolor id dignissimos.
-        </p><br><br>
+        <div class="book-img">
+            <img src="./assets/icons/book.png">
+        </div>
+        <p>
+            In a dimly lit maze, the player, armed with only a map and courage, navigates winding paths and hidden traps. Coins are scattered throughout the maze, glinting faintly in the shadows, tempting the brave adventurer to collect them. Along the way, keys are needed to unlock hidden paths, each key bringing them closer to freedom. But danger lurks – bots patrol the corridors, moving with mechanical precision, ready to chase if the player gets too close. With each key collected, the player’s hope grows, the exit shimmering like a distant star. Finally, the player spots the gate, a diamond-encrusted portal that promises escape. But one last key remains, hidden in the depths, the final challenge before victory.
+        </p>
         
     </section>
-    <section class="flex column avatars-section">
+    <section class="flex column avatars-section" data-section="avatars">
         <h2>Avatars</h2>
         <section class="flex row avatars">
             <div class="flex column avatars-containers">
@@ -173,7 +145,7 @@
                 </div>
             </section>    
         </section>
-        <section class="flex column controls-overview">
+        <section class="flex column controls-overview" data-section="controls">
             <div class="controls-background"></div>
             <div class="flex column controls">
                 <h2>Controls</h2>
@@ -217,18 +189,18 @@
             </div>
         </section>
         <section class="flex column tutorials">
-            <div class="flex column tutorials-information">
+            <div class="flex column tutorials-information" data-section="tutorials">
                 <h2>Tutorials</h2>
                 <div class="slider">
                     <div class="flex slides">
                         <div class="slide first">
-                            <img src="./assets/icons/placeholder4-p.png">
+                            <img src="./assets/icons/pacman-map.png">
                         </div>
                         <div class="slide">
                             <img src="./assets/icons/placeholder5-p.png">
                         </div>
                         <div class="slide">
-                            <img src="./assets/icons/placeholder6.jpg">
+                            <img src="./assets/icons/placeholder4-p.png">
                         </div>
                     </div>
                 </div>
@@ -327,6 +299,7 @@
             </div>
         </footer>
     <script src="./scripts/main.js"></script>
+    <script src="./scripts/nav-links.js"></script>
     <script src="./scripts/automatic-slideshow.js"></script>
 </body>
 </html>

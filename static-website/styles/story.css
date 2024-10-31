@@ -23,12 +23,22 @@ img {
 }
 .story{
     position:relative;
-    background: rgb(3, 5, 15);
+    background: url('../assets/icons/BG5.png') no-repeat center center; /* Path to your image */
+    background-size: cover; /* Ensures the image covers the entire section */
+    background-attachment: fixed;
+    background-color: rgb(3, 5, 15);
     padding: 100px;
     text-align: center;
     font-family: 'Jersey25';
     
 }
+.book-img {
+    width: 300px; /* Adjust as needed */
+    height: auto; /* Keeps the aspect ratio of the image */
+    margin: 0 auto; /* Centers the image within the container */
+    padding: 20px 0; /* Adds space above and below for a balanced look */
+}
+
 
 .story >h2{
     font-size: 3em;
@@ -40,6 +50,7 @@ img {
 .story > p{
     font-family: "Jersey15";
     font-size: 1em;
-    color: white;   
+    color: white;  
+    font-size: 20px;; 
     
 }
