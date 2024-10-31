@@ -32,7 +32,7 @@
 .tutorials{
     display: flex;
     justify-content: center;
-    background-color: rgb(17, 19, 24);
+    background-color: #0d1644;
     align-items: start; 
     color: white;
     height: 100vh;

@@ -34,8 +34,9 @@ let directions = [];
 let decisions = [];
 let moveDurations = [];
 let timers = [];
-let speeds = 140; 
+//let speeds = 140; 
 let startTime;
+let winStatus=false;
 
 const xMin = 20;
 const yMin = 20;
@@ -48,6 +49,7 @@ function preload() {
     this.load.image('bot', 'https://cdn-icons-png.flaticon.com/512/595/595582.png'); // Replace with your player image
     this.load.image('key', 'https://cdn-icons-png.flaticon.com/512/807/807241.png');
     this.load.image('coin', 'https://static.vecteezy.com/system/resources/thumbnails/023/588/193/small/coin-with-dollar-sign-golden-dollar-symbol-gold-coin-3d-stack-of-gold-coins-icon-isolated-symbol-png.png'); // Replace with your coin image
+    this.load.image('diamond', 'https://cdn-icons-png.flaticon.com/512/408/408472.png'); 
 }
 //bot = this.physics.add.sprite(50, 500, 'bot').setOrigin(10, 10).setScale(0.15);
 //bot.setCollideWorldBounds(true);
@@ -95,9 +97,9 @@ function create() {
         ' W  WWWWWWWWWWWWWWW  WWWWWWWWWWWWWWWWW',
         ' WWWWWwWW  WWWWWWWWWWWWWWWWW  WWWWWWWW',
         ' WWWWWWWWWWWWWWWWW  WWWWWWWWWWWWWWWWWW',
-        
-    ];
-    maze3 = [' ',' ',' ',' ',
+                                            
+    ];                                              
+    maze3 = [' ',' ',' ',' ',                   
         'IWWWW  WWWWWWWWWWWWWWW  WWWWWWWWWWWWW I',
         'IWWWWWWWWW  WWWWWWW  WWWWWWWWWW  WWWW I',
         'IWWWWW  WWWWWWWWWWWWWWWWW  WWWWWWWWWW I',
@@ -127,7 +129,7 @@ function create() {
         'IWWWWWWWWWWWW  WWWWWWWWW  WWWWWWWWWWW I',
         'IWW  WWWWWWWWWWWWW  WWWWWWWWWWWWWWWWW I',
         'IWWWWWWWW  WWWWWWWWWWWWWWWW  WWWWW  W I',
-        'IWWWWWWWWWWWWWWWW  WWWWWWWWWWWWWWWWWW I',
+        'IWWWWWWWWWWWWWWW  N    WWWWWWWWWWWWWW I',
         
     ];
     this.cameras.main.setBackgroundColor('#190321');
@@ -206,6 +208,10 @@ function create() {
         bots = this.physics.add.group();
         keys = this.physics.add.group();
 
+        const gate = this.physics.add.sprite(400, 820, 'diamond');
+        gate.setBounceY(Phaser.Math.FloatBetween(0.4, 0.8));
+        gate.setScale(0.09);
+
         botPositions.forEach(p => {
             const bot = bots.create(p.x, p.y, 'bot');
             bot.setBounceY(Phaser.Math.FloatBetween(0.4, 0.8));
@@ -225,6 +231,7 @@ function create() {
             key.setBounceY(Phaser.Math.FloatBetween(0.4, 0.8));
             key.setScale(0.05);
 });
+        totalKeys = keysPositions.length;
 
     
     
@@ -232,7 +239,85 @@ function create() {
     this.physics.add.collider(player, walls);
     this.physics.add.collider(bots, walls);
 
+    this.physics.add.overlap(player, gate, () => {
+        if (keyScore === totalKeys) { // Check if player has collected all keys
+            const winningtext = this.add.text(1000, 300, 'Congratulations, you WIN', {
+                fontSize: '64px',
+                fill: '#05f5f5',
+                fontFamily: 'Arial'
+            }).setScale(0.5).setInteractive();
+            
+            winningtext.setVisible(true);
+            
+            const winningtext2 = this.add.text(1000, 400, 'You can return to the main menu', {
+                fontSize: '48px',
+                fill: '#05f5f5',
+                fontFamily: 'Arial'
+            }).setScale(0.5).setInteractive();
+            
+            winningtext2.setVisible(true);
+    
+            const returnbtn = this.add.text(1000, 500, 'Main Menu', {
+                fontSize: '40px',
+                fill: '#05f5f5',
+                fontFamily: 'Arial'
+            }).setScale(0.5).setInteractive();
+            
+            returnbtn.setVisible(true);
+    
+            const reloadbtn = this.add.text(1200, 500, 'Replay', {
+                fontSize: '40px',
+                fill: '#05f5f5',
+                fontFamily: 'Arial'
+            }).setScale(0.5).setInteractive();
+            
+            reloadbtn.setVisible(true);
+            
+            this.scene.pause();  // Pause the game if the player wins
+        } else {
+            // Optional: Show a message if the player hasn’t collected all keys
+            const needKeysText = this.add.text(1000, 300, 'Collect all keys before exiting!', {
+                fontSize: '64px',
+                fill: '#ff0000',
+                fontFamily: 'Arial'
+            }).setScale(0.5);
+            
+            this.time.delayedCall(2000, () => needKeysText.destroy()); // Remove the message after 2 seconds
+        }
+    }, null, this);
+    
+
     this.physics.add.collider(player, beams)
+
+    this.physics.add.collider(player, bots, ()=>{
+        const loosingtext = this.add.text( 1000,  300, 'Game Over, you LOST', {
+            fontSize: '64px',
+            fill: '#05f5f5',
+            fontFamily: 'Arial'
+        }).setScale(0.5).setInteractive();
+        loosingtext.setVisible(true);
+        const loosingtext2 = this.add.text( 1000,  400, 'You can return to the main menu', {
+            fontSize: '48px',
+            fill: '#05f5f5',
+            fontFamily: 'Arial'
+        }).setScale(0.5).setInteractive();
+        loosingtext2.setVisible(true);
+        const returnbtn2 = this.add.text( 1000,  500, 'Main Menu', {
+            fontSize: '40px',
+            fill: '#05f5f5',
+            fontFamily: 'Arial'
+        }).setScale(0.5).setInteractive();
+        returnbtn2.setVisible(true);
+        const reloadbtn2 = this.add.text( 1200,  500, 'Replay', {
+            fontSize: '40px',
+            fill: '#05f5f5',
+            fontFamily: 'Arial'
+        }).setScale(0.5).setInteractive();
+        reloadbtn2.setVisible(true);
+        this.scene.pause();
+    }, null, this);
+    
+
 
     this.physics.add.collider(player, bots, this.hitBomb, null, this);
 
@@ -254,24 +339,34 @@ function create() {
     cursors = this.input.keyboard.createCursorKeys();
     
 }
+function loose(){
+    console.log('loose');
+}
+function win(scene){
+    return true;
+    
+    winStatus=true;
+    console.log(winStatus);
+    //scene.winningtext.setVisible(true);
 
+}
 function update() {
 
     bots.getChildren().forEach((bot,index)=>{
         //Bot should move from 40 to 740
         if (decisions[index] == 0)
             if(bot.x < 736)
-                bot.x = bot.x + 2
+                bot.x = bot.x + 1
             else{
                 decisions[index] = 1
-                bot.x = bot.x - 2
+                bot.x = bot.x - 1
             }
         else{
             if(bot.x > 44)
-                bot.x = bot.x-2
+                bot.x = bot.x-1
             else{
                 decisions[index] = 0
-                bot.x = bot.x + 2
+                bot.x = bot.x + 1
             }
             
         }
