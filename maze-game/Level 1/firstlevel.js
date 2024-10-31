@@ -50,7 +50,7 @@ function preload() {
     this.load.image('diamond', 'https://cdn-icons-png.flaticon.com/512/408/408472.png'); }
 
 function create() {
-    this.cameras.main.setZoom(0.5);
+    this.cameras.main.setZoom(0.8);
 
     player = this.physics.add.sprite(50, 50, 'player').setScale(0.15);
     player.setCollideWorldBounds(true);
@@ -125,7 +125,7 @@ function create() {
         'IWWWWWWWWWWWWWWWW  WWWWWWWWWWWWWWWWWW I',
         
     ];
-    this.cameras.main.setBackgroundColor('#0a1033');
+    this.cameras.main.setBackgroundColor('#0c1c52');
     var coinPositions = [];
     var keysPositions = [];
     let walls = [];

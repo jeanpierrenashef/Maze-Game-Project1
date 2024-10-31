@@ -55,8 +55,8 @@ function preload() {
 //bot.setCollideWorldBounds(true);
 
 function create() {
-    this.cameras.main.setBackgroundColor('#190321');     
-    this.cameras.main.setZoom(0.5); // Zoom out to show more of the game world
+    this.cameras.main.setBackgroundColor('#0c183d');     
+    this.cameras.main.setZoom(0.8); // Zoom out to show more of the game world
     
     // Initialize player, coins, bots, etc.
     player = this.physics.add.sprite(50, 50, 'player').setScale(0.15);
@@ -132,7 +132,7 @@ function create() {
         'IWWWWWWWWWWWWWWW  N    WWWWWWWWWWWWWW I',
         
     ];
-    this.cameras.main.setBackgroundColor('#190321');
+    this.cameras.main.setBackgroundColor('#0c183d');
     var coinPositions = [];
     var keysPositions = [];
     let walls = [];
