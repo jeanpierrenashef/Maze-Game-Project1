@@ -131,3 +131,13 @@
     font-size: 24px;
     color: white;
 }
+@media screen and (max-width: 1032px) {
+    .controls-section {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .controls-section{
+        width: 1000px;
+    }
+}

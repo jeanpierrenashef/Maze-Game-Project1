@@ -42,11 +42,16 @@
     margin-left: 230px;
 }
 .tutorials-information{
+    padding-top: 90px;
     justify-content: center;
     align-items: center;
 }
 .tutorials-information > .tutorials-left-section{
-    width: 40%;
+    width: 100%;
+    padding: 0 20px;
+}
+.tutorials-information > div{
+    gap:20px;
 }
 .tutorials-left-section{
     justify-content: center;
@@ -55,7 +60,7 @@
     
 }
 .tutorials-left-section>h2{
-    padding-bottom: 80px;
+    padding-bottom: 20px;
     color: white;
 }
 .tutorials-left-section>h3{
@@ -76,6 +81,7 @@
     width: 15%;
 }
 .escape > p{
+    margin-left: 5px;
     font-family: "Jersey15";
     align-items: start;
 }
@@ -87,8 +93,10 @@
     width: 18%;
 }
 .dodge > p{
+    padding-top: 30px;
     font-family: "Jersey15";
-    align-items: start;
+    align-items: center;
+    margin-left: 5px;
 }
 .collect{
     margin-left: 10px;
@@ -97,21 +105,40 @@
     width: 10%;
 }
 .collect > p{
+    padding-top: 6px;
     font-family: "Jersey15";
     align-items: start;
+    margin-left: 5px;
 }
+.highlight1{
+    color: rgb(230, 39, 39);
+    font-size: 32px;
+}
+.highlight2{
+    color: rgb(20, 214, 46);
+    font-size: 32px;
+}
+
+.highlight3{
+    color: rgb(243, 243, 28);
+    font-size: 32px;
+}
+
 
 .slider{
     width: 700px;
-    height: 500px;
-    border-radius: 10px;
+    height: 400px;
+    min-width: 250px;
+    min-height: 440px;
+    border-radius: 20px;
+    border-bottom-left-radius: 20px;
     overflow: hidden;
     position: relative;
 }
 .slides{
     transition: 1s ease;
     width:700px;
-    height: 500px;
+    height: 400px;
 
 }
 .slides input{
@@ -123,7 +150,7 @@
 }
 .slide img{
     width:700px;
-    height: 500px;
+    height: 400px;
 }
 
 

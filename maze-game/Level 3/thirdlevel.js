@@ -41,14 +41,14 @@ const yMax = 620;
 
 function preload() {
     this.load.image('player', 'https://cdn-icons-png.flaticon.com/128/742/742751.png');
-    this.load.image('bot', 'https://cdn-icons-png.freepik.com/512/1618/1618869.png'); // Replace with your player image
+    this.load.image('bot', 'https://cdn-icons-png.flaticon.com/512/761/761229.png'); // Replace with your player image
     this.load.image('key', 'https://cdn-icons-png.flaticon.com/512/807/807241.png');
     this.load.image('coin', 'https://static.vecteezy.com/system/resources/thumbnails/023/588/193/small/coin-with-dollar-sign-golden-dollar-symbol-gold-coin-3d-stack-of-gold-coins-icon-isolated-symbol-png.png'); // Replace with your coin image
     this.load.image('diamond', 'https://cdn-icons-png.flaticon.com/512/408/408472.png'); 
 }   
 
 function create() {
-    this.cameras.main.setBackgroundColor('#091538');     
+    this.cameras.main.setBackgroundColor('#112769');     
     this.cameras.main.setZoom(0.8); // Zoom out to show more of the game world
     
     // Initialize player, coins, bots, etc.
