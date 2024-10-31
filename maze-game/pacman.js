@@ -166,7 +166,7 @@ function create() {
         'IWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW I',
         
     ];
-    this.cameras.main.setBackgroundColor('#03050F'); 
+    this.cameras.main.setBackgroundColor('#0d1942'); 
     var coinPositions = [];
     let walls = [];
     var array=[];
